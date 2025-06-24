@@ -25,7 +25,7 @@ const { class: className } = Astro.props;
     </button>
 
     <!-- Modal -->
-    <div id="cvModal" class="z-50 fixed inset-0 hidden overflow-y-auto">
+    <div id="cvModal" class="hidden z-50 fixed inset-0 overflow-y-auto">
         <!-- Overlay -->
         <div
             id="modalOverlay"
@@ -40,16 +40,16 @@ const { class: className } = Astro.props;
             >
                 <!-- Modal Header -->
                 <div
-                    class="flex justify-between items-center border-gray-200 dark:border-gray-700 p-4 border-b"
+                    class="flex justify-between items-center p-4 border-gray-200 dark:border-gray-700 border-b"
                 >
                     <h3
-                        class="font-semibold text-gray-900 text-xl dark:text-white"
+                        class="font-semibold text-gray-900 dark:text-white text-xl"
                     >
                         Vista Previa del CV
                     </h3>
                     <button
                         id="closeModal"
-                        class="text-gray-400 hover:text-gray-500 focus:outline-none"
+                        class="focus:outline-none text-gray-400 hover:text-gray-500"
                     >
                         <svg
                             class="w-6 h-6"
@@ -70,7 +70,7 @@ const { class: className } = Astro.props;
                 <div class="p-4">
                     <div class="relative h-[60vh]">
                         <iframe
-                            src="/docs/MayraBarrantes_CV.pdf"
+                            src="/docs/cv_Mayra_Barrantes_Pi.pdf"
                             class="absolute inset-0 border-0 w-full h-full"
                             title="CV Preview"></iframe>
                     </div>
@@ -78,7 +78,7 @@ const { class: className } = Astro.props;
 
                 <!-- Modal Footer -->
                 <div
-                    class="flex justify-end items-center space-x-4 border-gray-200 dark:border-gray-700 p-4 border-t"
+                    class="flex justify-end items-center space-x-4 p-4 border-gray-200 dark:border-gray-700 border-t"
                 >
                     <button
                         class="px-4 py-2 text-gray-600 hover:text-gray-800 dark:hover:text-white dark:text-gray-300 transition-colors close-modal"
@@ -89,7 +89,7 @@ const { class: className } = Astro.props;
                         href="/docs/MayraBarrantes_CV.pdf"
                         download="MayraBarrantes_CV.pdf"
                         onclick="gtag('event', 'cv_download')"
-                        class="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 dark:hover:bg-teal-600 dark:bg-teal-500 px-6 py-3 rounded-lg text-white transition-colors"
+                        class="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 dark:bg-teal-500 dark:hover:bg-teal-600 px-6 py-3 rounded-lg text-white transition-colors"
                     >
                         <span>Descargar CV</span>
                         <svg
