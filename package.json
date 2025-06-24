@@ -1,5 +1,19 @@
 {
+  "name": "proyecto",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.4.0"
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.3.0",
+    "typescript": "^5.0.0"
   }
 }
