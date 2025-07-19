@@ -1,6 +1,6 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Linkedin from "../components/linkedin.astro";
-
 import Correo from "../components/Correo.astro";
 import Python from "../components/python.astro";
 import Java from "../components/java.astro";
@@ -23,541 +23,515 @@ const description =
 	"Portfolio profesional de Mayra Barrantes Pi, desarrolladora de aplicaciones multiplataforma especializada en Java, Python y tecnologías web.";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content={description} />
-		<title>{title}</title>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	</head>
+<Layout title={title} description={description}>
+	<script is:inline>
+		// Comprobar el tema actual
+		if (
+			localStorage.getItem("theme") === "dark" ||
+			(!localStorage.getItem("theme") &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches)
+		) {
+			document.documentElement.classList.add("dark");
+		} else {
+			document.documentElement.classList.remove("dark");
+		}
 
-	<body
-		class="flex flex-col items-center bg-zinc-200 dark:bg-zinc-950 min-h-screen"
+		// Función para cambiar el tema
+		function toggleDarkMode() {
+			const element = document.documentElement;
+			element.classList.toggle("dark");
+
+			// Si está en modo oscuro, guardar preferencia
+			const isDark = element.classList.contains("dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		}
+	</script>
+	<!--contenedor principal-->
+	<div
+		class="relative bg-zinc-100 dark:bg-zinc-800 shadow dark:border-black w-full sm:w-full md:max-w-6xl lg:max-w-6xl md:container"
 	>
-		<script is:inline>
-			// Comprobar el tema actual
-			if (
-				localStorage.getItem("theme") === "dark" ||
-				(!localStorage.getItem("theme") &&
-					window.matchMedia("(prefers-color-scheme: dark)").matches)
-			) {
-				document.documentElement.classList.add("dark");
-			} else {
-				document.documentElement.classList.remove("dark");
-			}
-
-			// Función para cambiar el tema
-			function toggleDarkMode() {
-				const element = document.documentElement;
-				element.classList.toggle("dark");
-
-				// Si está en modo oscuro, guardar preferencia
-				const isDark = element.classList.contains("dark");
-				localStorage.setItem("theme", isDark ? "dark" : "light");
-			}
-		</script>
-		<!--contenedor principal-->
-
-		<div
-			class="relative bg-zinc-100 dark:bg-zinc-800 shadow dark:border-black w-full sm:w-full md:max-w-6xl lg:max-w-6xl md:container"
+		<nav
+			class="top-0 z-50 sticky bg-white dark:bg-zinc-900 shadow-sm backdrop-blur-sm"
 		>
-			<nav
-				class="top-0 z-50 sticky bg-white dark:bg-zinc-900 shadow-sm backdrop-blur-sm"
-			>
-				<div class="flex justify-between items-center px-4 py-3">
-					<h1
-						class="bg-clip-text bg-gradient-to-r from-red-500 dark:from-teal-400 to-red-600 dark:to-teal-500 font-bold text-transparent text-2xl"
-					>
-						MB
-					</h1>
-					<div class="flex items-center gap-6">
-						<!-- Botón de modo oscuro actualizado -->
-						<Oscuro />
-
-						<a
-							href="#proyectos"
-							class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
-							>Proyectos</a
-						>
-						<a
-							href="#formacion"
-							class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
-							>Formación</a
-						>
-						<a
-							href="#contacta"
-							class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
-							>Contacta</a
-						>
-					</div>
-				</div>
-			</nav>
-
-			<div class="justify-center m-7 mt-2 p-2">
-				<div class="flex items-center m-2 mt-4 md:mt-20 p-2">
-					<img
-						src="/images/may.png"
-						alt="foto del perfil "
-						class="shadow-lg border-1 dark:border-teal-600 border-red-600 rounded-full w-32 md:w-48 hover:scale-105 transition-transform duration-300 transform"
-					/>
-					<h1
-						class="mb-4 ml-4 text-red-500 dark:text-teal-400 text-4xl md:text-6xl"
-					>
-						Mayra Barrantes Pi
-					</h1>
-				</div>
-
-				<h2
-					class="mt-12 mb-4 font-semibold text-gray-700 dark:text-teal-300 text-xl md:text-3xl"
+			<div class="flex justify-between items-center px-4 py-3">
+				<h1
+					class="bg-clip-text bg-gradient-to-r from-red-500 dark:from-teal-400 to-red-600 dark:to-teal-500 font-bold text-transparent text-2xl"
 				>
-					Técnico Superior en Desarrollo de Aplicaciones
-					Multiplataforma
+					MB
+				</h1>
+				<div class="flex items-center gap-6">
+					<!-- Botón de modo oscuro actualizado -->
+					<Oscuro />
+
+					<a
+						href="#proyectos"
+						class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
+						>Proyectos</a
+					>
+					<a
+						href="#formacion"
+						class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
+						>Formación</a
+					>
+					<a
+						href="#contacta"
+						class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
+						>Contacta</a
+					>
+				</div>
+			</div>
+		</nav>
+
+		<div class="justify-center m-7 mt-2 p-2">
+			<div class="flex items-center m-2 mt-4 md:mt-20 p-2">
+				<img
+					src="/images/may.png"
+					alt="foto del perfil "
+					class="shadow-lg border-1 dark:border-teal-600 border-red-600 rounded-full w-32 md:w-48 hover:scale-105 transition-transform duration-300 transform"
+				/>
+				<h1
+					class="mb-4 ml-4 text-red-500 dark:text-teal-400 text-4xl md:text-6xl"
+				>
+					Mayra Barrantes Pi
+				</h1>
+			</div>
+
+			<h2
+				class="mt-12 mb-4 font-semibold text-gray-700 dark:text-teal-300 text-xl md:text-3xl"
+			>
+				Técnico Superior en Desarrollo de Aplicaciones Multiplataforma
+			</h2>
+			<br />
+			<p class="text-gray-600 dark:text-gray-100 text-lg">
+				¡Hola! Soy Mayra, Técnico Superior en Desarrollo de Aplicaciones
+				Multiplataforma. Durante mi formación, trabajé en diversos
+				proyectos que me permitieron desarrollar y consolidar mis
+				habilidades en programación y desarrollo web.
+			</p>
+
+			<p class="text-gray-600 dark:text-gray-100 text-lg">
+				Me apasiona el aprendizaje continuo y disfruto enfrentando
+				desafíos que me permitan crecer profesional y personalmente.
+				Cuento con experiencia en tecnologías como React, Flask,
+				MongoDB, entre otras, y tengo una sólida base en metodologías
+				ágiles como Scrum.
+			</p>
+			<p class="text-gray-600 dark:text-gray-100 text-lg">
+				Mi objetivo es seguir participando en proyectos innovadores,
+				aportar valor con mis conocimientos y seguir evolucionando
+				dentro del sector tecnológico.
+			</p>
+
+			<!--boton sociales-->
+			<div class="flex gap-4 pt-4">
+				<div>
+					<a href="https://www.linkedin.com/in/mayrabpi/">
+						<Linkedin />
+					</a>
+				</div>
+				<div>
+					<a href="https://github.com/mayrabpi">
+						<GitHub1 />
+					</a>
+				</div>
+				<div>
+					<a href="mailto:mayrabpi@gmail.com">
+						<Correo />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-center my-8">
+			<hr class="mb-10 border-gray-300 border-t-2 w-[60%]" />
+		</div>
+		<!-- proyectos-->
+		<div id="proyectos" class="py-2"></div>
+
+		<section class="bg-zinc-100 dark:bg-zinc-800/50 px-6 py-12">
+			<div class="mx-auto max-w-6xl">
+				<h2
+					class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+				>
+					l Proyectos
 				</h2>
-				<br />
-				<p class="text-gray-600 dark:text-gray-100 text-lg">
-					¡Hola! Soy Mayra, Técnico Superior en Desarrollo de
-					Aplicaciones Multiplataforma. Durante mi formación, trabajé
-					en diversos proyectos que me permitieron desarrollar y
-					consolidar mis habilidades en programación y desarrollo web.
-				</p>
-
-				<p class="text-gray-600 dark:text-gray-100 text-lg">
-					Me apasiona el aprendizaje continuo y disfruto enfrentando
-					desafíos que me permitan crecer profesional y personalmente.
-					Cuento con experiencia en tecnologías como React, Flask,
-					MongoDB, entre otras, y tengo una sólida base en
-					metodologías ágiles como Scrum.
-				</p>
-				<p class="text-gray-600 dark:text-gray-100 text-lg">
-					Mi objetivo es seguir participando en proyectos innovadores,
-					aportar valor con mis conocimientos y seguir evolucionando
-					dentro del sector tecnológico.
-				</p>
-
-				<!--boton sociales-->
-				<div class="flex gap-4 pt-4">
-					<div>
-						<a href="https://www.linkedin.com/in/mayrabpi/">
-							<Linkedin />
-						</a>
-					</div>
-					<div>
-						<a href="https://github.com/mayrabpi">
-							<GitHub1 />
-						</a>
-					</div>
-					<div>
-						<a href="mailto:mayrabpi@gmail.com">
-							<Correo />
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="flex justify-center my-8">
-				<hr class="mb-10 border-gray-300 border-t-2 w-[60%]" />
-			</div>
-			<!-- proyectos-->
-			<div id="proyectos" class="py-2"></div>
-
-			<section class="bg-zinc-100 dark:bg-zinc-800/50 px-6 py-12">
-				<div class="mx-auto max-w-6xl">
-					<h2
-						class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+				<div class="gap-8 grid grid-cols-1 md:grid-cols-2">
+					<!-- Proyectos con HTML CSS Y Javascript-->
+					<article
+						class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
 					>
-						l Proyectos
-					</h2>
-					<div class="gap-8 grid grid-cols-1 md:grid-cols-2">
-						<!-- Proyectos con HTML CSS Y Javascript-->
-						<article
-							class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
-						>
-							<div class="space-y-4 p-6">
-								<h3
-									class="font-bold text-gray-900 dark:text-white text-xl"
-								>
-									Aplicación de Control de Stock e Inventario
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									Desarrollo de una herramienta de gestión
-									para comercios pequeños utilizando React,
-									Tailwind CSS, Flask y MongoDB.
-								</p>
-								<div class="flex items-center gap-2 py-3">
-									<Javascript />
-									<Tailwind />
-									<Python />
-									<Visual />
-								</div>
-								<a
-									href="https://github.com/mayrabpi/Proyecto-Simon-dice"
-									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
-								>
-									Ver código
-									<Flecha />
-								</a>
-							</div>
-						</article>
-						<!-- Portfolio Personal-->
-						<article
-							class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
-						>
-							<div class="space-y-4 p-6">
-								<h3
-									class="font-bold text-gray-900 dark:text-white text-xl"
-								>
-									Juego de memoria en Python
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									Juego de memoria interactivo implementado en
-									Python, donde los jugadores deben encontrar
-									pares de cartas coincidentes. El juego
-									soporta múltiples modos de juego y utiliza
-									emojis como símbolos para las cartas.
-								</p>
-								<div class="flex items-center gap-2 py-3">
-									<Python />
-								</div>
-								<a
-									href="https://github.com/mayrabpi/Memoria"
-									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
-								>
-									Ver código
-									<Flecha />
-								</a>
-							</div>
-						</article>
-						<!-- Máquina Virtual-->
-						<article
-							class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
-						>
-							<div class="space-y-4 p-6">
-								<h3
-									class="font-bold text-gray-900 dark:text-white text-xl"
-								>
-									Máquina Virtual
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									Proyecto Máquina Virtual en java orientada a
-									aprender los conceptos básicos de la
-									orientación a objetos y a java, uso de
-									arrays y enumerados; manipulación de cadenas
-									con la clase String, entrada y salida por
-									consola.
-								</p>
-								<div class="flex items-center gap-2 py-3">
-									<Java />
-								</div>
-								<a
-									href="https://github.com/mayrabpi/Proyecto_Maquina_Virtual"
-									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
-								>
-									Ver código
-									<Flecha />
-								</a>
-							</div>
-						</article>
-
-						<!-- Simon Dice-->
-						<article
-							class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
-						>
-							<div class="space-y-4 p-6">
-								<h3
-									class="font-bold text-gray-900 dark:text-white text-xl"
-								>
-									Juego Simon Dice
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									Simon Dice es una implementación del clásico
-									juego de memoria "Simon" en java, el juego
-									genera una secuencia aleatoria de colores
-									que el jugador debe memorizar y repetir.
-								</p>
-								<div class="flex items-center gap-2 py-3">
-									<Java />
-								</div>
-								<a
-									href="https://github.com/mayrabpi/Proyecto-Simon-dice"
-									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
-								>
-									Ver código
-									<Flecha />
-								</a>
-							</div>
-						</article>
-
-						<article
-							class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
-						>
-							<div class="space-y-4 p-6">
-								<h3
-									class="font-bold text-gray-900 dark:text-white text-xl"
-								>
-									Portfolio Personal
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									Proyecto de mi portfolio personal, hecho con
-									Astro y Tailwind CSS.
-								</p>
-								<div class="flex items-center gap-2 py-3">
-									<Tailwind />
-									<Astrito />
-									<HTML />
-									<Visual />
-								</div>
-								<a
-									href="https://github.com/mayrabpi/Portfoli_Tailwind_Astro"
-									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
-								>
-									Ver código
-									<Flecha />
-								</a>
-							</div>
-						</article>
-						<!--mini proyectos-->
-						<article
-							class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
-						>
-							<div class="space-y-4 p-6">
-								<h3
-									class="font-bold text-gray-900 dark:text-white text-xl"
-								>
-									Mini proyectos con java
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									Mini proyectos que hago para practicar y
-									entender los conceptos básicos de la
-									programación orientación a objetos y a java,
-									uso de Arboles, Excepciones, Ficheros, Hilos
-									y Estructuras de Datos.
-								</p>
-								<div class="flex items-center gap-2 py-3">
-									<Java />
-								</div>
-								<a
-									href="https://github.com/mayrabpi/Acceso_Datos"
-									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
-								>
-									Ver código
-									<Flecha />
-								</a>
-							</div>
-						</article>
-					</div>
-				</div>
-				<div class="flex justify-center my-16">
-					<hr class="mb-10 border-gray-300 border-t-2 w-[60%]" />
-				</div>
-
-				<!-- Formación -->
-				<div id="formacion" class="py-2"></div>
-			</section>
-			<section class="bg-zinc-100 dark:bg-zinc-800/50 px-6">
-				<div class="mx-auto mb-20 max-w-6xl">
-					<h2
-						class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
-					>
-						l Formación
-					</h2>
-					<div class="space-y-6">
-						<div
-							class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl"
-						>
+						<div class="space-y-4 p-6">
 							<h3
 								class="font-bold text-gray-900 dark:text-white text-xl"
 							>
-								Técnico Superior DAM
+								Aplicación de Control de Stock e Inventario
 							</h3>
-							<p class="text-red-500 dark:text-teal-400">
-								Colegio Litterator • 2023 - 2025
+							<p class="text-gray-600 dark:text-gray-400">
+								Desarrollo de una herramienta de gestión para
+								comercios pequeños utilizando React, Tailwind
+								CSS, Flask y MongoDB.
 							</p>
-							<p class="mt-2 text-gray-600 dark:text-gray-400">
-								Desarrollo de Aplicaciones Multiplataforma con
-								especialización en Java y Python
+							<div class="flex items-center gap-2 py-3">
+								<Javascript />
+								<Tailwind />
+								<Python />
+								<Visual />
+							</div>
+							<a
+								href="https://github.com/mayrabpi/Proyecto-Simon-dice"
+								class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
+							>
+								Ver código
+								<Flecha />
+							</a>
+						</div>
+					</article>
+					<!-- Portfolio Personal-->
+					<article
+						class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
+					>
+						<div class="space-y-4 p-6">
+							<h3
+								class="font-bold text-gray-900 dark:text-white text-xl"
+							>
+								Juego de memoria en Python
+							</h3>
+							<p class="text-gray-600 dark:text-gray-400">
+								Juego de memoria interactivo implementado en
+								Python, donde los jugadores deben encontrar
+								pares de cartas coincidentes. El juego soporta
+								múltiples modos de juego y utiliza emojis como
+								símbolos para las cartas.
 							</p>
-							<div class="mt-8 text-center">
-								<VerCV />
+							<div class="flex items-center gap-2 py-3">
+								<Python />
 							</div>
+							<a
+								href="https://github.com/mayrabpi/Memoria"
+								class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
+							>
+								Ver código
+								<Flecha />
+							</a>
 						</div>
-					</div>
-				</div>
-
-				<!-- Skills -->
-				<div class="mx-auto px-6 max-w-6xl">
-					<h2
-						class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+					</article>
+					<!-- Máquina Virtual-->
+					<article
+						class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
 					>
-						l Skills
-					</h2>
-
-					<div class="gap-6 grid grid-cols-2 md:grid-cols-4">
-						<!-- Lenguajes -->
-						<div
-							class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
-						>
-							<h4
-								class="mb-4 font-bold text-gray-900 dark:text-white"
+						<div class="space-y-4 p-6">
+							<h3
+								class="font-bold text-gray-900 dark:text-white text-xl"
 							>
-								Lenguajes
-							</h4>
-							<div class="space-y-3">
-								<div class="flex items-center gap-2">
-									<Python />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>Python</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<Java />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>Java</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<Javascript />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>JavaScript</span
-									>
-								</div>
+								Máquina Virtual
+							</h3>
+							<p class="text-gray-600 dark:text-gray-400">
+								Proyecto Máquina Virtual en java orientada a
+								aprender los conceptos básicos de la orientación
+								a objetos y a java, uso de arrays y enumerados;
+								manipulación de cadenas con la clase String,
+								entrada y salida por consola.
+							</p>
+							<div class="flex items-center gap-2 py-3">
+								<Java />
 							</div>
-						</div>
-
-						<!-- Frontend -->
-						<div
-							class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
-						>
-							<h4
-								class="mb-4 font-bold text-gray-900 dark:text-white"
+							<a
+								href="https://github.com/mayrabpi/Proyecto_Maquina_Virtual"
+								class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
 							>
-								Frontend
-							</h4>
-							<div class="space-y-3">
-								<div class="flex items-center gap-2">
-									<HTML />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>HTML5</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<CSS />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>CSS3</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<Tailwind />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>Tailwind</span
-									>
-								</div>
-							</div>
+								Ver código
+								<Flecha />
+							</a>
 						</div>
+					</article>
 
-						<!-- Backend -->
-						<div
-							class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
-						>
-							<h4
-								class="mb-4 font-bold text-gray-900 dark:text-white"
-							>
-								Backend
-							</h4>
-							<div class="space-y-3">
-								<div class="flex items-center gap-2">
-									<Python />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>Flask (Python)</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<MongoDB />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>MongoDB</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<Astrito />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>Astro</span
-									>
-								</div>
-							</div>
-						</div>
-
-						<!-- Herramientas -->
-						<div
-							class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
-						>
-							<h4
-								class="mb-4 font-bold text-gray-900 dark:text-white"
-							>
-								Herramientas
-							</h4>
-							<div class="space-y-3">
-								<div class="flex items-center gap-2">
-									<Visual />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>VS Code</span
-									>
-								</div>
-								<div class="flex items-center gap-2">
-									<GitHub1 />
-									<span
-										class="text-gray-600 dark:text-gray-400"
-										>Git/GitHub</span
-									>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="flex justify-center my-16">
-					<hr class="mb-20 border-gray-300 border-t-2 w-[60%]" />
-				</div>
-
-				<!-- Contacto -->
-				<div id="contacta" class="py-2"></div>
-				<section class="dark:bg-zinc-800/50 mt-16 px-6 pb-20">
-					<h2
-						class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+					<!-- Simon Dice-->
+					<article
+						class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
 					>
-						l Contacta
-					</h2>
+						<div class="space-y-4 p-6">
+							<h3
+								class="font-bold text-gray-900 dark:text-white text-xl"
+							>
+								Juego Simon Dice
+							</h3>
+							<p class="text-gray-600 dark:text-gray-400">
+								Simon Dice es una implementación del clásico
+								juego de memoria "Simon" en java, el juego
+								genera una secuencia aleatoria de colores que el
+								jugador debe memorizar y repetir.
+							</p>
+							<div class="flex items-center gap-2 py-3">
+								<Java />
+							</div>
+							<a
+								href="https://github.com/mayrabpi/Proyecto-Simon-dice"
+								class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
+							>
+								Ver código
+								<Flecha />
+							</a>
+						</div>
+					</article>
 
+					<article
+						class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
+					>
+						<div class="space-y-4 p-6">
+							<h3
+								class="font-bold text-gray-900 dark:text-white text-xl"
+							>
+								Portfolio Personal
+							</h3>
+							<p class="text-gray-600 dark:text-gray-400">
+								Proyecto de mi portfolio personal, hecho con
+								Astro y Tailwind CSS.
+							</p>
+							<div class="flex items-center gap-2 py-3">
+								<Tailwind />
+								<Astrito />
+								<HTML />
+								<Visual />
+							</div>
+							<a
+								href="https://github.com/mayrabpi/Portfoli_Tailwind_Astro"
+								class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
+							>
+								Ver código
+								<Flecha />
+							</a>
+						</div>
+					</article>
+					<!--mini proyectos-->
+					<article
+						class="bg-white dark:bg-zinc-900 shadow-lg rounded-xl overflow-hidden hover:scale-102 hover:scale-105 duration-300 transform"
+					>
+						<div class="space-y-4 p-6">
+							<h3
+								class="font-bold text-gray-900 dark:text-white text-xl"
+							>
+								Mini proyectos con java
+							</h3>
+							<p class="text-gray-600 dark:text-gray-400">
+								Mini proyectos que hago para practicar y
+								entender los conceptos básicos de la
+								programación orientación a objetos y a java, uso
+								de Arboles, Excepciones, Ficheros, Hilos y
+								Estructuras de Datos.
+							</p>
+							<div class="flex items-center gap-2 py-3">
+								<Java />
+							</div>
+							<a
+								href="https://github.com/mayrabpi/Acceso_Datos"
+								class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
+							>
+								Ver código
+								<Flecha />
+							</a>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="flex justify-center my-16">
+				<hr class="mb-10 border-gray-300 border-t-2 w-[60%]" />
+			</div>
+
+			<!-- Formación -->
+			<div id="formacion" class="py-2"></div>
+		</section>
+		<section class="bg-zinc-100 dark:bg-zinc-800/50 px-6">
+			<div class="mx-auto mb-20 max-w-6xl">
+				<h2
+					class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+				>
+					l Formación
+				</h2>
+				<div class="space-y-6">
 					<div
-						class="gap-8 grid grid-cols-1 lg:grid-cols-5 mx-auto max-w-4xl"
+						class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl"
 					>
-						<!-- Formulario de contacto -->
-						<div class="lg:col-span-3">
-							<Formulario />
-						</div>
-
-						<!-- Redes sociales -->
-						<div class="lg:col-span-2">
-							<Div_sociales />
+						<h3
+							class="font-bold text-gray-900 dark:text-white text-xl"
+						>
+							Técnico Superior DAM
+						</h3>
+						<p class="text-red-500 dark:text-teal-400">
+							Colegio Litterator • 2023 - 2025
+						</p>
+						<p class="mt-2 text-gray-600 dark:text-gray-400">
+							Desarrollo de Aplicaciones Multiplataforma con
+							especialización en Java y Python
+						</p>
+						<div class="mt-8 text-center">
+							<VerCV />
 						</div>
 					</div>
-				</section>
-			</section>
-			<footer>
-				<p class="mr-4 ml-auto text-gray-400 text-sm text-center">
-					© 2025 Mayra Barrantes Pi
-				</p>
-			</footer>
+				</div>
+			</div>
+
+			<!-- Skills -->
+			<div class="mx-auto px-6 max-w-6xl">
+				<h2
+					class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+				>
+					l Skills
+				</h2>
+
+				<div class="gap-6 grid grid-cols-2 md:grid-cols-4">
+					<!-- Lenguajes -->
+					<div
+						class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
+					>
+						<h4
+							class="mb-4 font-bold text-gray-900 dark:text-white"
+						>
+							Lenguajes
+						</h4>
+						<div class="space-y-3">
+							<div class="flex items-center gap-2">
+								<Python />
+								<span class="text-gray-600 dark:text-gray-400"
+									>Python</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<Java />
+								<span class="text-gray-600 dark:text-gray-400"
+									>Java</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<Javascript />
+								<span class="text-gray-600 dark:text-gray-400"
+									>JavaScript</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Frontend -->
+					<div
+						class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
+					>
+						<h4
+							class="mb-4 font-bold text-gray-900 dark:text-white"
+						>
+							Frontend
+						</h4>
+						<div class="space-y-3">
+							<div class="flex items-center gap-2">
+								<HTML />
+								<span class="text-gray-600 dark:text-gray-400"
+									>HTML5</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<CSS />
+								<span class="text-gray-600 dark:text-gray-400"
+									>CSS3</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<Tailwind />
+								<span class="text-gray-600 dark:text-gray-400"
+									>Tailwind</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Backend -->
+					<div
+						class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
+					>
+						<h4
+							class="mb-4 font-bold text-gray-900 dark:text-white"
+						>
+							Backend
+						</h4>
+						<div class="space-y-3">
+							<div class="flex items-center gap-2">
+								<Python />
+								<span class="text-gray-600 dark:text-gray-400"
+									>Flask (Python)</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<MongoDB />
+								<span class="text-gray-600 dark:text-gray-400"
+									>MongoDB</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<Astrito />
+								<span class="text-gray-600 dark:text-gray-400"
+									>Astro</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Herramientas -->
+					<div
+						class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
+					>
+						<h4
+							class="mb-4 font-bold text-gray-900 dark:text-white"
+						>
+							Herramientas
+						</h4>
+						<div class="space-y-3">
+							<div class="flex items-center gap-2">
+								<Visual />
+								<span class="text-gray-600 dark:text-gray-400"
+									>VS Code</span
+								>
+							</div>
+							<div class="flex items-center gap-2">
+								<GitHub1 />
+								<span class="text-gray-600 dark:text-gray-400"
+									>Git/GitHub</span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="flex justify-center my-16">
 				<hr class="mb-20 border-gray-300 border-t-2 w-[60%]" />
 			</div>
+
+			<!-- Contacto -->
+			<div id="contacta" class="py-2"></div>
+			<section class="dark:bg-zinc-800/50 mt-16 px-6 pb-20">
+				<h2
+					class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+				>
+					l Contacta
+				</h2>
+
+				<div
+					class="gap-8 grid grid-cols-1 lg:grid-cols-5 mx-auto max-w-4xl"
+				>
+					<!-- Formulario de contacto -->
+					<div class="lg:col-span-3">
+						<Formulario />
+					</div>
+
+					<!-- Redes sociales -->
+					<div class="lg:col-span-2">
+						<Div_sociales />
+					</div>
+				</div>
+			</section>
+		</section>
+		<footer>
+			<p class="mr-4 ml-auto text-gray-400 text-sm text-center">
+				© 2025 Mayra Barrantes Pi
+			</p>
+		</footer>
+		<div class="flex justify-center my-16">
+			<hr class="mb-20 border-gray-300 border-t-2 w-[60%]" />
 		</div>
-	</body>
-</html>
+	</div>
+</Layout>
