@@ -9,6 +9,96 @@ const { title, description } = Astro.props;
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<style>
+			/* Animaciones personalizadas */
+			@keyframes fadeInUp {
+				0% {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes fadeInLeft {
+				0% {
+					opacity: 0;
+					transform: translateX(-30px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+
+			.animate-fadeInUp {
+				animation: fadeInUp 1s ease-out;
+			}
+
+			.animate-fadeInLeft {
+				animation: fadeInLeft 0.8s ease-out;
+			}
+
+			/* Efecto de escritura */
+			.typing-animation {
+				border-right: 3px solid;
+				border-color: rgb(239 68 68); /* red-500 */
+				animation: blink 1s infinite;
+			}
+
+			.dark .typing-animation {
+				border-color: rgb(45 212 191); /* teal-400 */
+			}
+
+			.typing-complete {
+				border-right: none !important;
+			}
+
+			@keyframes blink {
+				0%,
+				50% {
+					border-color: transparent;
+				}
+				51%,
+				100% {
+					border-color: inherit;
+				}
+			}
+
+			/* Gradiente animado para el texto */
+			.animate-gradient {
+				background: linear-gradient(
+					-45deg,
+					#ef4444,
+					#f97316,
+					#eab308,
+					#22c55e,
+					#3b82f6,
+					#8b5cf6,
+					#ec4899
+				);
+				background-size: 400% 400%;
+				animation: gradient 3s ease infinite;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			@keyframes gradient {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
+		</style>
 	</head>
 	<body
 		class="flex flex-col items-center bg-zinc-200 dark:bg-zinc-950 min-h-screen"

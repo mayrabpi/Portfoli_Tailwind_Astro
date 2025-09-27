@@ -45,6 +45,27 @@ const description =
 			const isDark = element.classList.contains("dark");
 			localStorage.setItem("theme", isDark ? "dark" : "light");
 		}
+
+		// Efecto de escritura para el nombre
+		document.addEventListener("DOMContentLoaded", function () {
+			const text = "Mayra Barrantes Pi";
+			const typingElement = document.querySelector(".typing-animation");
+			let index = 0;
+
+			function typeWriter() {
+				if (index < text.length) {
+					typingElement.textContent += text.charAt(index);
+					index++;
+					setTimeout(typeWriter, 150);
+				} else {
+					// Agregar cursor parpadeante al final
+					typingElement.classList.add("typing-complete");
+				}
+			}
+
+			// Iniciar el efecto después de un pequeño delay
+			setTimeout(typeWriter, 500);
+		});
 	</script>
 	<!--contenedor principal-->
 	<div
@@ -74,6 +95,11 @@ const description =
 						>Formación</a
 					>
 					<a
+						href="#experiencia"
+						class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
+						>Experiencia</a
+					>
+					<a
 						href="#contacta"
 						class="text-gray-600 hover:text-red-500 dark:hover:text-teal-500 dark:text-gray-300"
 						>Contacta</a
@@ -87,12 +113,13 @@ const description =
 				<img
 					src="/images/may.png"
 					alt="foto del perfil "
-					class="shadow-lg border-1 dark:border-teal-600 border-red-600 rounded-full w-32 md:w-48 hover:scale-105 transition-transform duration-300 transform"
+					class="shadow-lg border-1 dark:border-teal-600 border-red-600 rounded-full w-32 md:w-48 hover:scale-105 transition-transform animate-fadeInLeft duration-300 transform"
 				/>
 				<h1
-					class="mb-4 ml-4 text-red-500 dark:text-teal-400 text-4xl md:text-6xl"
+					id="nombre-animado"
+					class="mb-4 ml-4 font-bold text-red-500 dark:text-teal-400 text-4xl md:text-6xl animate-fadeInUp"
 				>
-					Mayra Barrantes Pi
+					<span class="typing-animation"></span>
 				</h1>
 			</div>
 
@@ -104,17 +131,24 @@ const description =
 			<br />
 			<p class="text-gray-600 dark:text-gray-100 text-lg">
 				¡Hola! Soy Mayra, Técnico Superior en Desarrollo de Aplicaciones
-				Multiplataforma. Durante mi formación, trabajé en diversos
-				proyectos que me permitieron desarrollar y consolidar mis
-				habilidades en programación y desarrollo web.
+				Multiplataforma y actualmente Consultora Técnica en CCM
+				Exstream. Durante mi formación, trabajé en diversos proyectos
+				que me permitieron desarrollar y consolidar mis habilidades en
+				programación y desarrollo web.
 			</p>
 
 			<p class="text-gray-600 dark:text-gray-100 text-lg">
 				Me apasiona el aprendizaje continuo y disfruto enfrentando
 				desafíos que me permitan crecer profesional y personalmente.
 				Cuento con experiencia en tecnologías como React, Flask,
-				MongoDB, entre otras, y tengo una sólida base en metodologías
-				ágiles como Scrum.
+				MongoDB, OpenText Exstream, entre otras, y tengo una sólida base
+				en metodologías ágiles como Scrum.
+			</p>
+			<p class="text-gray-600 dark:text-gray-100 text-lg">
+				Actualmente trabajo adaptando y optimizando plantillas de
+				comunicación empresarial, lo que me ha permitido combinar mis
+				conocimientos técnicos con soluciones prácticas para mejorar la
+				accesibilidad y funcionalidad de documentos corporativos.
 			</p>
 			<p class="text-gray-600 dark:text-gray-100 text-lg">
 				Mi objetivo es seguir participando en proyectos innovadores,
@@ -369,6 +403,97 @@ const description =
 				</div>
 			</div>
 
+			<!-- Experiencia Profesional -->
+			<div id="experiencia" class="py-2"></div>
+			<div class="mx-auto mb-20 max-w-6xl">
+				<h2
+					class="mb-12 font-bold text-red-500 dark:text-teal-200 text-3xl"
+				>
+					l Experiencia Profesional
+				</h2>
+				<div class="space-y-6">
+					<div
+						class="bg-white dark:bg-zinc-900 shadow-lg p-6 rounded-xl hover:scale-105 duration-300 transform"
+					>
+						<div class="flex justify-between items-start mb-2">
+							<div>
+								<h3
+									class="font-bold text-gray-900 dark:text-white text-xl"
+								>
+									Consultor Técnico CCM Exstream
+								</h3>
+								<p
+									class="font-semibold text-red-500 dark:text-teal-400"
+								>
+									<a
+										href="https://www.vilt-group.com"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="hover:text-red-600 dark:hover:text-teal-300 hover:underline transition-colors duration-200"
+									>
+										Vilt
+									</a> • Septiembre 2025 - Actualidad
+								</p>
+							</div>
+							<span
+								class="bg-green-100 dark:bg-green-900 px-2.5 py-0.5 rounded-full font-medium text-green-800 dark:text-green-300 text-xs"
+							>
+								Actual
+							</span>
+						</div>
+						<p
+							class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed"
+						>
+							Consultor técnico en CCM Exstream, trabajando en la
+							implementación y optimización de soluciones de
+							gestión de comunicaciones con clientes. Desarrollo y
+							mantenimiento de plantillas, configuraciones
+							avanzadas y automatización de procesos para mejorar
+							la eficiencia operativa.
+						</p>
+						<div class="mt-4">
+							<h4
+								class="mb-2 font-semibold text-gray-800 dark:text-gray-200"
+							>
+								Responsabilidades clave:
+							</h4>
+							<ul
+								class="space-y-1 ml-4 text-gray-600 dark:text-gray-400 text-sm"
+							>
+								<li class="flex items-start">
+									<span
+										class="mr-2 text-red-500 dark:text-teal-400"
+										>•</span
+									>
+									Adaptación de plantillas existentes de CCM Exstream
+								</li>
+								<li class="flex items-start">
+									<span
+										class="mr-2 text-red-500 dark:text-teal-400"
+										>•</span
+									>
+									Mejora de accesibilidad y usabilidad de documentos
+								</li>
+								<li class="flex items-start">
+									<span
+										class="mr-2 text-red-500 dark:text-teal-400"
+										>•</span
+									>
+									Configuración y personalización de soluciones
+								</li>
+								<li class="flex items-start">
+									<span
+										class="mr-2 text-red-500 dark:text-teal-400"
+										>•</span
+									>
+									Soporte técnico en implementación de plantillas
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- Skills -->
 			<div class="mx-auto px-6 max-w-6xl">
 				<h2
@@ -487,7 +612,7 @@ const description =
 									>VS Code</span
 								>
 							</div>
-							<div class="flex items-center gap-2">
+							<div class="flex items-center">
 								<GitHub1 />
 								<span class="text-gray-600 dark:text-gray-400"
 									>Git/GitHub</span
