@@ -434,6 +434,12 @@ const description =
 				const scrollLeftBtn = document.getElementById("scroll-left");
 				const scrollRightBtn = document.getElementById("scroll-right");
 
+				// Validar que los elementos existen antes de usarlos
+				if (!container || !scrollLeftBtn || !scrollRightBtn) {
+					console.error("No se encontraron los elementos del carrusel");
+					return;
+				}
+
 				const scrollAmount = 320; // ancho de la tarjeta + gap
 
 				scrollLeftBtn.addEventListener("click", () => {
@@ -453,20 +459,20 @@ const description =
 				// Opcional: actualizar indicadores basado en scroll
 				container.addEventListener("scroll", () => {
 					const scrollLeft = container.scrollLeft;
-					const scrollWidth =
-						container.scrollWidth - container.clientWidth;
+					const scrollWidth = container.scrollWidth - container.clientWidth;
 					const percentage = scrollLeft / scrollWidth;
 
 					// Actualizar opacidad de indicadores basado en posición
-					document
-						.querySelectorAll('[id^="indicator-"]')
-						.forEach((indicator, index) => {
-							const indicatorPosition = index / 2; // ajustar según número de indicadores
-							indicator.style.opacity =
-								Math.abs(percentage - indicatorPosition) < 0.3
-									? "1"
-									: "0.5";
-						});
+					const indicators = document.querySelectorAll('[id^="indicator-"]');
+					indicators.forEach((indicator, index) => {
+						// Cast explícito a HTMLElement
+						const indicatorElement = indicator as HTMLElement;
+						const indicatorPosition = index / 2; // ajustar según número de indicadores
+						indicatorElement.style.opacity =
+							Math.abs(percentage - indicatorPosition) < 0.3
+								? "1"
+								: "0.5";
+					});
 				});
 			});
 		</script>
