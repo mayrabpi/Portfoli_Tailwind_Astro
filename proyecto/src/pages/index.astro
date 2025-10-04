@@ -251,7 +251,7 @@ const description =
 									<Visual />
 								</div>
 								<a
-									href="https://github.com/mayrabpi/Proyecto-Simon-dice"
+									href="https://github.com/mayrabpi/TFG-gestor-inventario"
 									class="inline-flex items-center gap-2 text-red-500 dark:text-teal-400 hover:underline"
 								>
 									Ver código
@@ -436,7 +436,9 @@ const description =
 
 				// Validar que los elementos existen antes de usarlos
 				if (!container || !scrollLeftBtn || !scrollRightBtn) {
-					console.error("No se encontraron los elementos del carrusel");
+					console.error(
+						"No se encontraron los elementos del carrusel",
+					);
 					return;
 				}
 
@@ -459,11 +461,13 @@ const description =
 				// Opcional: actualizar indicadores basado en scroll
 				container.addEventListener("scroll", () => {
 					const scrollLeft = container.scrollLeft;
-					const scrollWidth = container.scrollWidth - container.clientWidth;
+					const scrollWidth =
+						container.scrollWidth - container.clientWidth;
 					const percentage = scrollLeft / scrollWidth;
 
 					// Actualizar opacidad de indicadores basado en posición
-					const indicators = document.querySelectorAll('[id^="indicator-"]');
+					const indicators =
+						document.querySelectorAll('[id^="indicator-"]');
 					indicators.forEach((indicator, index) => {
 						// Cast explícito a HTMLElement
 						const indicatorElement = indicator as HTMLElement;
